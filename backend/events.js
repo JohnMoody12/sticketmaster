@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const server = express();
+const { testConnection } = require("./db");
 server.use(express.json());
 server.use(cors());
 require("dotenv").config();
@@ -20,7 +21,7 @@ server.get("/events/:eventId", (req, res) => {
     res.json("no event");
   }
 });
-
+testConnection();
 server.listen(5000, () => {
   console.log("we listenin");
 });
