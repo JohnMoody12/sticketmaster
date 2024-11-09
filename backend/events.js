@@ -4,7 +4,7 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 require("dotenv").config();
-
+//pgadmin stuff.
 let e = [
   { title: "T-Swift", loc: "Houston", date: "April", id: 1 },
   { title: "Axe", loc: "Austin", date: "April", id: 2 },
