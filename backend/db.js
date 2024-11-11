@@ -24,7 +24,7 @@ async function testConnection() {
   }
 }
 
-// Example query function
+// Example query function - i actually forgot about this altogether. not great. i guess it was? the weekend though.
 async function getAllEvents() {
   try {
     const result = await pool.query("SELECT * FROM events");
