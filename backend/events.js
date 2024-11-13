@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const server = express();
-const { testConnection } = require("./db");
+const { testConnection, getAllEvents, getEvent } = require("./db");
 server.use(express.json());
 server.use(cors());
 require("dotenv").config();
@@ -12,11 +12,11 @@ let e = [
   { title: "LOTR", loc: "Dallas", date: "May", id: 3 },
 ];
 
-server.get("/events/:eventId", (req, res) => {
+server.get("/events/:eventId", async (req, res) => {
   try {
     const eventId = Number(req.params.eventId);
-    const event = e.filter((event) => event.id == eventId)[0];
-    res.json({ message: `event ${event.title}` });
+    let eventInfo = await getEvent(eventId);
+    res.json(eventInfo);
   } catch {
     res.json("no event");
   }

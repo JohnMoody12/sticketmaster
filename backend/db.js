@@ -24,7 +24,6 @@ async function testConnection() {
   }
 }
 
-// Example query function - i actually forgot about this altogether. not great. i guess it was? the weekend though.
 async function getAllEvents() {
   try {
     const result = await pool.query("SELECT * FROM events");
@@ -35,8 +34,21 @@ async function getAllEvents() {
   }
 }
 
+async function getEvent(eventId) {
+  try {
+    const result = await pool.query("SELECT * FROM events WHERE event_id=$1", [
+      eventId,
+    ]);
+    return result.rows[0];
+  } catch (err) {
+    console.log("error with eventId query");
+    throw err;
+  }
+}
+
 module.exports = {
   pool,
   getAllEvents,
   testConnection,
+  getEvent,
 };
