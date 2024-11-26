@@ -69,3 +69,10 @@ dI();
 dI.flush();
 dI();
 setTimeout(() => dI(), 2000);
+
+{
+  let aa = "adsfsf";
+  var bb = "asdfsafdsdf";
+}
+
+console.log(bb);
