@@ -70,9 +70,18 @@ dI.flush();
 dI();
 setTimeout(() => dI(), 2000);
 
-{
-  let aa = "adsfsf";
-  var bb = "asdfsafdsdf";
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  showThis() {
+    console.log(this);
+  }
 }
 
-console.log(bb);
+const person = new Person("John");
+person.showThis(); // Person {name: 'John'}
+
+const showThisStandalone = person.showThis;
+showThisStandalone.apply(person); // `undefined` because all parts of a class' body are strict mode.
