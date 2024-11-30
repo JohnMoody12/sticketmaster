@@ -1,25 +1,42 @@
-// let arr = [7, 2, 4, 5];
+let arr = [7, 2, 4, 5];
 
-// Array.prototype.myReduce = function (callbackFn, initialValue) {
-//   const noInit = initialValue === undefined;
-//   const l = this.length;
+Array.prototype.myReduce = function (callbackFn, initialValue) {
+  const noInit = initialValue === undefined;
+  const l = this.length;
 
-//   if (noInit && l === 0) {
-//     throw new TypeError("Reduce empty w/no initial value");
-//   }
+  if (noInit && l === 0) {
+    throw new TypeError("Reduce empty w/no initial value");
+  }
 
-//   let acc = noInit ? this[0] : initialValue;
-//   let initIndex = noInit ? 1 : 0;
+  let acc = noInit ? this[0] : initialValue;
+  let initIndex = noInit ? 1 : 0;
 
-//   for (let k = initIndex; k < l; k++) {
-//     if (Object.hasOwn(this, k)) {
-//       acc = callbackFn(acc, this[k], k, this);
-//     }
-//   }
-//   return acc;
-// };
+  for (let k = initIndex; k < l; k++) {
+    //Use Object.hasOwn on an array to check for null or empty items
+    if (Object.hasOwn(this, k)) {
+      acc = callbackFn(acc, this[k], k, this);
+    }
+  }
+  return acc;
+};
 
-// console.log(arr.myReduce((acc) => acc + 1, 0));
+//cbFn->acc, val, init, arr
+Array.prototype.myReduce2 = function (cbFn, initVal) {
+  const isItInitialized = !(initVal === undefined);
+  const initIndex = isItInitialized ? 0 : 1;
+  let acc = isItInitialized ? initVal : this[0];
+
+  for (let k = initIndex; k < this.length; k++) {
+    if (Object.hasOwn(this, k)) {
+      acc = cbFn(acc, this[k], k, this);
+    }
+  }
+
+  return acc;
+};
+
+console.log(arr.myReduce2((acc) => acc + 1, 0));
+console.log(arr.myReduce((acc) => acc + 1, 0));
 /*
 function debounce(func, wait = 0) {
   let timeoutId = null;
@@ -118,6 +135,3 @@ console.log(boundGetAge()); // 42
 const mary = { age: 21 };
 const boundGetAgeMary = john.getAge.bind(mary);
 console.log(boundGetAgeMary()); // 21
-
-const abc = john.getAge;
-console.log(abc()); // undefined
