@@ -20,6 +20,7 @@
 // };
 
 // console.log(arr.myReduce((acc) => acc + 1, 0));
+/*
 function debounce(func, wait = 0) {
   let timeoutId = null;
   let lastArgs = null;
@@ -85,3 +86,38 @@ person.showThis(); // Person {name: 'John'}
 
 const showThisStandalone = person.showThis;
 showThisStandalone.apply(person); // `undefined` because all parts of a class' body are strict mode.
+*/
+// const person2 = {
+//   name: "Joe",
+//   showThis() {
+//     console.log(this.name);
+//   },
+//   showThis2: () => {
+//     console.log(this);
+//   },
+// };
+
+// person2.showThis();
+// person2.showThis2();
+
+const john = {
+  age: 42,
+  getAge: function () {
+    return this.age;
+  },
+};
+
+console.log(john.getAge()); // 42
+
+const unboundGetAge = john.getAge;
+console.log(unboundGetAge()); // undefined
+
+const boundGetAge = john.getAge.bind(john);
+console.log(boundGetAge()); // 42
+
+const mary = { age: 21 };
+const boundGetAgeMary = john.getAge.bind(mary);
+console.log(boundGetAgeMary()); // 21
+
+const abc = john.getAge;
+console.log(abc()); // undefined
