@@ -1,24 +1,24 @@
 let arr = [7, 2, 4, 5];
 
-Array.prototype.myReduce = function (callbackFn, initialValue) {
-  const noInit = initialValue === undefined;
-  const l = this.length;
+// Array.prototype.myReduce = function (callbackFn, initialValue) {
+//   const noInit = initialValue === undefined;
+//   const l = this.length;
 
-  if (noInit && l === 0) {
-    throw new TypeError("Reduce empty w/no initial value");
-  }
+//   if (noInit && l === 0) {
+//     throw new TypeError("Reduce empty w/no initial value");
+//   }
 
-  let acc = noInit ? this[0] : initialValue;
-  let initIndex = noInit ? 1 : 0;
+//   let acc = noInit ? this[0] : initialValue;
+//   let initIndex = noInit ? 1 : 0;
 
-  for (let k = initIndex; k < l; k++) {
-    //Use Object.hasOwn on an array to check for null or empty items
-    if (Object.hasOwn(this, k)) {
-      acc = callbackFn(acc, this[k], k, this);
-    }
-  }
-  return acc;
-};
+//   for (let k = initIndex; k < l; k++) {
+//     //Use Object.hasOwn on an array to check for null or empty items
+//     if (Object.hasOwn(this, k)) {
+//       acc = callbackFn(acc, this[k], k, this);
+//     }
+//   }
+//   return acc;
+// };
 
 //cbFn->acc, val, init, arr
 Array.prototype.myReduce2 = function (cbFn, initVal) {
