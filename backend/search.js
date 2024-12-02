@@ -21,22 +21,22 @@ let arr = [7, 2, 4, 5];
 // };
 
 //cbFn->acc, val, init, arr
-Array.prototype.myReduce2 = function (cbFn, initVal) {
-  const isItInitialized = !(initVal === undefined);
-  const initIndex = isItInitialized ? 0 : 1;
-  let acc = isItInitialized ? initVal : this[0];
+// Array.prototype.myReduce2 = function (cbFn, initVal) {
+//   const isItInitialized = !(initVal === undefined);
+//   const initIndex = isItInitialized ? 0 : 1;
+//   let acc = isItInitialized ? initVal : this[0];
 
-  for (let k = initIndex; k < this.length; k++) {
-    if (Object.hasOwn(this, k)) {
-      acc = cbFn(acc, this[k], k, this);
-    }
-  }
+//   for (let k = initIndex; k < this.length; k++) {
+//     if (Object.hasOwn(this, k)) {
+//       acc = cbFn(acc, this[k], k, this);
+//     }
+//   }
 
-  return acc;
-};
+//   return acc;
+// };
 
-console.log(arr.myReduce2((acc) => acc + 1, 0));
-console.log(arr.myReduce((acc) => acc + 1, 0));
+// console.log(arr.myReduce2((acc) => acc + 1, 0));
+// console.log(arr.myReduce((acc) => acc + 1, 0));
 /*
 function debounce(func, wait = 0) {
   let timeoutId = null;
@@ -135,3 +135,13 @@ console.log(boundGetAge()); // 42
 const mary = { age: 21 };
 const boundGetAgeMary = john.getAge.bind(mary);
 console.log(boundGetAgeMary()); // 21
+
+async function bob() {
+  console.log("1");
+  await Promise.resolve();
+  console.log("2");
+}
+
+console.log("A");
+bob();
+console.log("B");
