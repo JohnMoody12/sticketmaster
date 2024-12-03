@@ -145,3 +145,14 @@ async function bob() {
 console.log("A");
 bob();
 console.log("B");
+
+function foo() {}
+
+// foo as a function object:
+console.log(foo.__proto__ === Function.prototype); // true
+
+// foo's .prototype property:
+console.log(foo.prototype.__proto__ === Object.prototype); // true
+
+// To really show the difference:
+console.log(foo.__proto__ === foo.prototype); // false
