@@ -156,3 +156,18 @@ console.log(foo.prototype.__proto__ === Object.prototype); // true
 
 // To really show the difference:
 console.log(foo.__proto__ === foo.prototype); // false
+
+console.log(Object.getPrototypeOf(foo.__proto__));
+console.log(Object.getPrototypeOf(foo.prototype));
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+
+  this.sayHello = function () {
+    console.log(`Hi I'm ${this.name} and I'm ${this.age}`);
+  };
+}
+
+let joe = new Person("Joe", 20);
+joe.sayHello();
