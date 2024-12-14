@@ -235,13 +235,38 @@ const obj = new Example("Alice");
 obj.normalFunction();
 obj.arrowFunction();
 
-function Timer() {
-  this.seconds = 0;
-  let that = this;
-  setInterval(function () {
-    that.seconds++;
-    console.log(that.seconds);
-  }, 1000);
-}
+// function Timer() {
+//   this.seconds = 0;
+//   let that = this;
+//   setInterval(function () {
+//     that.seconds++;
+//     console.log(that.seconds);
+//   }, 1000);
+// }
 
-const timer = new Timer();
+// const timer = new Timer();
+
+const o = {
+  value: 42,
+  getValue: function () {
+    return this.value;
+  }, // `this` does not refer to `o`
+};
+
+const oo = {
+  value: 43,
+  getValue: function () {
+    return this.value;
+  }, // `this` does not refer to `o`
+};
+
+console.log(o.getValue()); // undefined
+console.log(o.getValue.bind(oo)()); // undefined
+console.log(o.getValue()); // undefined
+
+a = [6, 5, 4];
+b = [4, 5];
+
+for (let i in o) {
+  console.log(i);
+}
