@@ -22,18 +22,20 @@ const Parent = () => {
           className=" bg-blue-400 rounded-md p-5 m-5 text-white font-semibold text-2xl"
           onClick={randomNum}
         >
-          Parent
+          Parent State
         </button>
         <button
           className=" bg-blue-400 rounded-md p-5 m-5 text-white font-semibold text-2xl"
           onClick={updateState}
         >
-          State
+          State-&gt;Child
         </button>
         <div className=" bg-blue-400 rounded-md p-5 m-5 text-white font-semibold text-2xl">
-          {parentRandomNum}
+          Parent Random Num State: {parentRandomNum}
         </div>
-        <div>{parentBob}</div>
+        <div className=" bg-blue-400 rounded-md p-5 m-5 text-white font-semibold text-2xl">
+          Parent Bob (var in par fn): {parentBob}
+        </div>
       </div>
       <div>
         <Child testState={testState} randomNum={randomNum} />

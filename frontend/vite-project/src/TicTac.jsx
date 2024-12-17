@@ -65,9 +65,9 @@ export const TicTac = () => {
   }
 
   return (
-    <div>
-      {winner ? `${winner} has won` : `Player ${xTurn ? "X" : "O"}'s turn`}
-      <div className=" grid grid-cols-3 grid-rows-3 w-fit mx-auto">
+    <div className={winner ? `text-5xl text-red-500 py-2` : `text-3xl py-2`}>
+      {winner ? `${winner} has won!` : `Player ${xTurn ? "X" : "O"}'s turn`}
+      <div className=" grid grid-cols-3 grid-rows-3 w-fit mx-auto text-black">
         {new Array(9).fill(null).map((v, idx) => {
           return <Cell idx={idx} key={idx} markCell={markCell} board={board} />;
         })}

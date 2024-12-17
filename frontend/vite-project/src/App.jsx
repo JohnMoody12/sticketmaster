@@ -4,6 +4,8 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Parent from "./Parent";
 import { TicTac, Cell } from "./TicTac";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Accordion from "./Accordion";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,10 +20,37 @@ function App() {
     setEvents(e);
   }, []);
   return (
-    <>
-      <div className="bg-slate-400 text-5xl">T i c Tac Toooe </div>
-      <TicTac />
-    </>
+    <Router>
+      <div>
+        <div className="bg-slate-400 text-5xl py-4">Playground </div>
+        <nav className="bg-slate-800 p-4 text-white flex justify-start align-middle">
+          <ul className=" flex justify-start">
+            <li className="px-4">
+              <Link to="/" className=" hover:bg-emerald-100">
+                Parent
+              </Link>
+            </li>
+            <li className="px-4">
+              <Link to="/tictac" className=" hover:bg-emerald-100">
+                TicTacToe
+              </Link>
+            </li>
+            <li className="px-4">
+              <Link to="/accordion" className=" hover:bg-emerald-100">
+                Accordion
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <main>
+          <Routes>
+            <Route path="/" element={<Parent />} />
+            <Route path="/tictac" element={<TicTac />} />
+            <Route path="/accordion" element={<Accordion />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 

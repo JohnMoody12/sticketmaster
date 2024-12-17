@@ -23,9 +23,16 @@ const Child = React.memo(({ testState, randomNum }) => {
       >
         Parent State Button
       </button>
-      <div>State: {testState}</div>
-      <div>ChildRandomNum: {childRandomNum}</div>
-      <div>Bob: {bob}</div>
+
+      <div className=" bg-emerald-400 rounded-md p-5 m-5 font-semibold text-2xl">
+        State from Par: {testState}
+      </div>
+      <div className=" bg-emerald-400 rounded-md p-5 m-5 font-semibold text-2xl">
+        ChildRandomNum: {childRandomNum}
+      </div>
+      <div className=" bg-emerald-400 rounded-md p-5 m-5 font-semibold text-2xl">
+        Bob (var in child fn): {bob}
+      </div>
     </div>
   );
 });
