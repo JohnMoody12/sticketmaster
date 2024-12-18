@@ -36,24 +36,48 @@
 
 // console.log(joe["message"]);
 
-async function* getDataGenerator() {
-  let todo = 1;
-  while (true) {
-    try {
-      let res = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${todo}`
-      );
-      let data = await res.json();
-      yield data;
-    } catch (err) {
-      console.log(err);
+// async function* getDataGenerator() {
+//   let todo = 1;
+//   while (true) {
+//     try {
+//       let res = await fetch(
+//         `https://jsonplaceholder.typicode.com/todos/${todo}`
+//       );
+//       let data = await res.json();
+//       yield data;
+//     } catch (err) {
+//       console.log(err);
+//     }
+//     todo++;
+//   }
+// }
+
+// let dataIterator = getDataGenerator();
+
+// for await (let t of dataIterator) {
+//   console.log(t);
+// }
+function camelCaseKeys() {
+  let test1 = "Foo_Bar";
+  let test2 = "foo_bar";
+  let split = false;
+  let word1 = "";
+  let word2 = "";
+  for (let ch of test1) {
+    if (ch === "_") {
+      split = true;
+      continue;
     }
-    todo++;
+    if (!split) {
+      word1 += ch;
+    } else {
+      word2 += ch;
+    }
   }
+  let word3 =
+    word1.toLowerCase() + word2[0].toUpperCase() + word2.slice(1).toLowerCase();
+
+  console.log(word3);
 }
 
-let dataIterator = getDataGenerator();
-
-for await (let t of dataIterator) {
-  console.log(t);
-}
+camelCaseKeys();
