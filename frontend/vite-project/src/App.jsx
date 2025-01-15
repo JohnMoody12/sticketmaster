@@ -7,6 +7,7 @@ import { TicTac, Cell } from "./TicTac";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Accordion from "./Accordion";
 import Scrolls from "./Scrolls";
+import Stars from "./Stars";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -46,6 +47,11 @@ function App() {
                 Scrolls
               </Link>
             </li>
+            <li className="px-4">
+              <Link to="/stars" className=" hover:bg-emerald-100">
+                Stars
+              </Link>
+            </li>
           </ul>
         </nav>
         <main>
@@ -54,6 +60,7 @@ function App() {
             <Route path="/tictac" element={<TicTac />} />
             <Route path="/accordion" element={<Accordion />} />
             <Route path="/scrolls" element={<Scrolls />} />
+            <Route path="/stars" element={<Stars />} />
           </Routes>
         </main>
       </div>
