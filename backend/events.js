@@ -8,6 +8,9 @@ const {
   getEventTickets,
   bookTicket,
 } = require("./db");
+
+const { getText, pool2, searchPosts } = require("./db2");
+const { searchQuestions } = require("./db3");
 server.use(express.json());
 server.use(cors());
 require("dotenv").config();
@@ -36,6 +39,46 @@ server.get("/tickets/:eventId", async (req, res) => {
     res.json("no event");
   }
 });
+
+server.get("/text", async (req, res) => {
+  try {
+    const text = await getText();
+    const textJson = await JSON.parse(text);
+    res.json(textJson);
+  } catch (err) {
+    console.log(err);
+    res.json("error");
+  }
+});
+
+// server.get("/text/search", async (req, res) => {
+//   try {
+//     const searchQuery = req.query.q;
+//     if (!searchQuery) {
+//       return res.status(400).json({ error: "need search query" });
+//     }
+//     const searchResults = await searchPosts(searchQuery);
+//     res.json(searchResults);
+//   } catch (err) {
+//     console.log(err);
+//     res.json("error");
+//   }
+// });
+
+server.get("/text/search", async (req, res) => {
+  try {
+    const searchQuery = req.query.q;
+    if (!searchQuery) {
+      return res.status(400).json({ error: "need search query" });
+    }
+    const searchResults = await searchQuestions(searchQuery);
+    res.json(searchResults);
+  } catch (err) {
+    console.log(err);
+    res.json("error");
+  }
+});
+
 server.post("/tickets/book/:ticketId", async (req, res) => {
   try {
     const ticketId = Number(req.params.ticketId);

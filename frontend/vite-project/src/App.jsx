@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Accordion from "./Accordion";
 import Scrolls from "./Scrolls";
 import Stars from "./Stars";
+import { Search } from "./Search";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -52,6 +53,11 @@ function App() {
                 Stars
               </Link>
             </li>
+            <li className="px-4">
+              <Link to="/search" className=" hover:bg-emerald-100">
+                Search
+              </Link>
+            </li>
           </ul>
         </nav>
         <main>
@@ -61,6 +67,7 @@ function App() {
             <Route path="/accordion" element={<Accordion />} />
             <Route path="/scrolls" element={<Scrolls />} />
             <Route path="/stars" element={<Stars />} />
+            <Route path="/search" element={<Search />} />
           </Routes>
         </main>
       </div>
